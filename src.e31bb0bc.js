@@ -124,23 +124,33 @@ var randomIntegerFromInterval = function randomIntegerFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-var idInterval = null;
 var startButton = document.querySelector(".start");
-console.log("startButton", startButton);
 var stopButton = document.querySelector(".stop");
-startButton.addEventListener("click", startSwitchColor);
-stopButton.addEventListener("click", stopSwitchColor);
+var interval = {
+  idInterval: null,
+  isActive: false,
+  startSwitchColor: function startSwitchColor() {
+    if (this.isActive) {
+      return;
+    }
 
-function startSwitchColor() {
-  idInterval = setInterval(function () {
-    document.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length)];
-  }, 1000);
-}
-
-function stopSwitchColor() {
-  clearInterval(idInterval);
-  document.body.style.backgroundColor = colors[0];
-}
+    this.isActive = true;
+    this.idInterval = setInterval(function () {
+      document.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length)];
+    }, 1000);
+  },
+  stopSwitchColor: function stopSwitchColor() {
+    clearInterval(this.idInterval);
+    this.isActive = false;
+    document.body.style.backgroundColor = colors[0];
+  }
+};
+startButton.addEventListener("click", function () {
+  interval.startSwitchColor();
+});
+stopButton.addEventListener("click", function () {
+  interval.stopSwitchColor();
+});
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -175,7 +185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57740" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58854" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
