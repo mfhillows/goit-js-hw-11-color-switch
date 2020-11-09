@@ -16,8 +16,9 @@ const interval = {
     startSwitchColor() {
         if (isActive) {
             return;
-      }
-        idInterval = setInterval(() => {
+        }
+        this.isActive = true;
+        this.idInterval = setInterval(() => {
           document.body.style.backgroundColor =
             colors[randomIntegerFromInterval(0, colors.length)];
         }, 1000);
