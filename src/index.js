@@ -1,0 +1,1 @@
+import colorSwitch from "./js/switch";
