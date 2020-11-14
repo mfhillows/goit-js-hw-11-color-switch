@@ -22,6 +22,9 @@ const interval = {
       return;
     }
     this.isActive = true;
+    startButton.disabled = true;
+    stopButton.disabled = false;
+
     this.idInterval = setInterval(() => {
       document.body.style.backgroundColor =
         colors[randomIntegerFromInterval(0, colors.length)];
@@ -30,6 +33,9 @@ const interval = {
   stopSwitchColor() {
     clearInterval(this.idInterval);
     this.isActive = false;
+    startButton.disabled = false;
+    stopButton.disabled = true;
+
     document.body.style.backgroundColor = colors[0];
   },
 };
