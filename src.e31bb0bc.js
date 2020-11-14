@@ -135,6 +135,8 @@ var interval = {
     }
 
     this.isActive = true;
+    startButton.disabled = true;
+    stopButton.disabled = false;
     this.idInterval = setInterval(function () {
       document.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length)];
     }, 1000);
@@ -142,6 +144,8 @@ var interval = {
   stopSwitchColor: function stopSwitchColor() {
     clearInterval(this.idInterval);
     this.isActive = false;
+    startButton.disabled = false;
+    stopButton.disabled = true;
     document.body.style.backgroundColor = colors[0];
   }
 };
@@ -185,7 +189,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58854" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51631" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
